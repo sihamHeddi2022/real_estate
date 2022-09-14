@@ -7,11 +7,16 @@ const UserSchema = new mongoose.Schema({
     first_name:String,
     last_name:String,
     adress : {
-      street:String
-     - city
-     - country
-     - postal code
-    }
-    - aboutme
-    - profil_image
+      street:String,
+      city:String,
+      country:String,
+      postal_code:Number
+    },
+    aboutme:String,
+    profil_image:String
 }) 
+const User = mongoose.model("user",UserSchema)
+
+module.exports= {
+  User
+}
