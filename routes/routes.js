@@ -23,8 +23,23 @@ routes.get("/register",(req,res)=>{
 })
 
 
+routes.get("/dashboard",(req,res)=>{
+    return res.render("admin/pages/dashboard",{"title":"Dashboard"}) 
 
+})
 
+routes.get("/admin/houses",(req,res)=>{
+    return res.render("admin/pages/houses",{"title":"Houses"}) 
+
+})
+routes.get("/admin/orders",(req,res)=>{
+    return res.render("admin/pages/orders",{"title":"Orders"}) 
+
+})
+routes.get("/admin/profile",(req,res)=>{
+    return res.render("admin/pages/profile",{"title":"Profile"}) 
+
+})
 
 
 module.exports = {

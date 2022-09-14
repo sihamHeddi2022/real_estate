@@ -4,6 +4,8 @@ const app = express()
 const {routes} = require("./routes/routes")
 app.set('view engine','ejs');
 app.use(express.static(path.join(__dirname,"public")))
+app.use("/assets",express.static(path.join(__dirname,"public","admin","assets")))
+
 app.set("views","public")
 
 app.use(routes)
