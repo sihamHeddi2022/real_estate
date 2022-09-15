@@ -3,6 +3,7 @@ const {User}= require("../models/user")
 const routes = require("express").Router()
 const bcrypt = require("bcryptjs")
 const passport = require("passport")
+const { House } = require("../models/house")
 
 
 routes.get("/",(req,res)=>{
@@ -10,9 +11,17 @@ routes.get("/",(req,res)=>{
 
 })
 
-routes.get("/properties",(req,res)=>{
-    console.log("req.params",req.query);
-    return res.render("properties") 
+routes.get("/properties",async(req,res)=>{
+    let query_params = req.query
+    const query = Object.keys(query_params).length>0? {"location.city":{$regex:query_params.city, $options: 'i'},category:query_params.category,price:{$lte:query_params.minPrice,$gte:query_params.maxPrice},area:{$lte:query_params.minArea,$gte:query_params.maxArea},num_bedrooms:query_params.bedrooms,num_bathrooms:query_params.bathrooms, business_type:query_params.type}:{}
+ 
+        const houses = await House.find(query)
+        console.log(houses);
+
+        return res.render("properties",{houses:houses,query:query_params}) 
+ 
+ 
+     
 
 })
 

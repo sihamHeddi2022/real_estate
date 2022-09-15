@@ -45,21 +45,19 @@
                   <div class="col-md-2">
                     <div class="aa-single-advance-search">
                       <select name="category">
-                        <option value="" selected>Category</option>
                       <option value="Apartment" >Apartment</option>
                         <option value="Cottage">Cottage</option>
                         <option value="Castle">Castle</option>
                         <option value="Villa">Villa</option>
-                        <option value="Family house">family house</option>
+                        <option value="Family house">Family house</option>
                       </select>
                     </div>
                   </div>
                   <div class="col-md-2">
                     <div class="aa-single-advance-search">
                       <select name="type">
-                        <option value="0" selected>Type</option>
-                        <option value="rent">Rent</option>
-                        <option value="sale">Sale</option>
+                        <option value="rent">rent</option>
+                        <option value="sale">sale</option>
                       
                       </select>
                   </div>
@@ -67,7 +65,7 @@
                   <div class="col-md-2">
                     <div class="aa-single-advance-search">
                       <select  name="bedrooms">
-                        <option value="0" selected>Bedrooms</option>
+                        <option value="" selected>Bedrooms</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -75,11 +73,19 @@
                         <option value="4">5</option>
                       </select>
                   </div>
+                  
+                  <input type="hidden" name="minPrice">
+                  <input type="hidden" name="maxPrice">
+
+                  <input type="hidden" name="minArea">
+                  <input type="hidden" name="maxArea">
+               
+               
                   </div>
                   <div class="col-md-2">
                     <div class="aa-single-advance-search">
                     <select   name="bathrooms">
-                      <option value="0" selected>Bathrooms</option>
+                      <option value="" selected>Bathrooms</option>
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
@@ -384,12 +390,11 @@
      let maxArea =  document.getElementById("skip-value-upper2").innerText
     
      let form = document.getElementById("form")
-
-     form["minPrice"]=minPrice
-     form["maxPrice"]=maxPrice
-     console.log(form);
-     form["minArea"]=minArea
-     form["maxArea"]=maxArea
+     
+     form["minPrice"].value=minPrice
+     form["maxPrice"].value=maxPrice
+     form["minArea"].value=minArea
+     form["maxArea"].value=maxArea
     
      form.submit()
   

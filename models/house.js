@@ -4,7 +4,7 @@ const houseSchema = new mongoose.Schema({
 
    title:String,
    price:Number,
-   description:Text,
+   description:String,
    location : {
         city:String ,
         adress : {
