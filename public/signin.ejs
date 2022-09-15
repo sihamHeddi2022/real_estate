@@ -51,8 +51,11 @@
               <div class="aa-signin-form-title">
                 <a class="aa-property-home" href="index.html">Property Home</a>
                 <h4>Sign in to your account</h4>
+                <% if(messages.error) { %>
+                  <p><%= messages.error %> </p>
+                <% } %>  
               </div>
-              <form class="contactform">                                                 
+              <form class="contactform"  method="post" action="/login">                                                 
                 <div class="aa-single-field">
                   <label for="email">Email <span class="required">*</span></label>
                   <input type="email" required="required" aria-required="true" value="" name="email">

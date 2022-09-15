@@ -31,94 +31,98 @@
   <section id="aa-advance-search">
     <div class="container">
       <div class="aa-advance-search-area">
-        <div class="form">
-         <div class="aa-advance-search-top">
-            <div class="row">
-              <div class="col-md-3">
-                <div class="aa-single-advance-search">
-                  <input type="text" placeholder="Type The City">
+        <form action="/properties" method="get" id="form">
+
+       
+            <div class="form">
+            <div class="aa-advance-search-top">
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="aa-single-advance-search">
+                      <input type="text" placeholder="Type The City" name="city">
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="aa-single-advance-search">
+                      <select name="category">
+                        <option value="" selected>Category</option>
+                      <option value="Apartment" >Apartment</option>
+                        <option value="Cottage">Cottage</option>
+                        <option value="Castle">Castle</option>
+                        <option value="Villa">Villa</option>
+                        <option value="Family house">family house</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="aa-single-advance-search">
+                      <select name="type">
+                        <option value="0" selected>Type</option>
+                        <option value="rent">Rent</option>
+                        <option value="sale">Sale</option>
+                      
+                      </select>
+                  </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="aa-single-advance-search">
+                      <select  name="bedrooms">
+                        <option value="0" selected>Bedrooms</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="4">5</option>
+                      </select>
+                  </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="aa-single-advance-search">
+                    <select   name="bathrooms">
+                      <option value="0" selected>Bathrooms</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="4">5</option>
+                    </select>
+                </div>
+                </div>
+                  <div class="col-md-1">
+                    <div class="aa-single-advance-search">
+                      <button class="aa-search-btn" id="search"  type="button"><i class="bi bi-search"></i></button>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-2">
-                <div class="aa-single-advance-search">
-                  <select>
-                    <option value="" selected>Category</option>
-                   <option value="0" >Apartment</option>
-                    <option value="1">Cottage</option>
-                    <option value="2">Castle</option>
-                    <option value="3">Villa</option>
-                    <option value="4">family house</option>
-                  </select>
+            <div class="aa-advance-search-bottom">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="aa-single-filter-search">
+                    <span>AREA (SQ)</span>
+                    <span>FROM</span>
+                    <span id="skip-value-lower" class="example-val">200.00</span>
+                    <span>TO</span>
+                    <span id="skip-value-upper" class="example-val">1000.00</span>
+                    <div id="aa-sqrfeet-range" class="noUi-target noUi-ltr noUi-horizontal noUi-background">
+                    </div>                  
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-2">
-                 <div class="aa-single-advance-search">
-                  <select>
-                    <option value="0" selected>Type</option>
-                    <option value="1">Rent</option>
-                    <option value="2">Sale</option>
-                  
-                  </select>
-              </div>
-              </div>
-              <div class="col-md-2">
-                 <div class="aa-single-advance-search">
-                  <select>
-                    <option value="0" selected>Bedrooms</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="4">5</option>
-                  </select>
-              </div>
-              </div>
-              <div class="col-md-2">
-                <div class="aa-single-advance-search">
-                 <select>
-                   <option value="0" selected>Bathrooms</option>
-                   <option value="1">1</option>
-                   <option value="2">2</option>
-                   <option value="3">3</option>
-                   <option value="4">4</option>
-                   <option value="4">5</option>
-                 </select>
-             </div>
-             </div>
-              <div class="col-md-1">
-                <div class="aa-single-advance-search">
-                  <button class="aa-search-btn" type="submit"><i class="bi bi-search"></i></button>
+                <div class="col-md-6">
+                  <div class="aa-single-filter-search">
+                    <span>PRICE ($)</span>
+                    <span>FROM</span>
+                    <span id="skip-value-lower2" class="example-val">200.00</span>
+                    <span>TO</span>
+                    <span id="skip-value-upper2" class="example-val">1000.00</span>
+                    <div id="aa-price-range" class="noUi-target noUi-ltr noUi-horizontal noUi-background">
+                    </div>      
+                  </div>
                 </div>
-              </div>
+              </div>  
             </div>
-          </div>
-         <div class="aa-advance-search-bottom">
-           <div class="row">
-            <div class="col-md-6">
-              <div class="aa-single-filter-search">
-                <span>AREA (SQ)</span>
-                <span>FROM</span>
-                <span id="skip-value-lower" class="example-val">30.00</span>
-                <span>TO</span>
-                <span id="skip-value-upper" class="example-val">100.00</span>
-                <div id="aa-sqrfeet-range" class="noUi-target noUi-ltr noUi-horizontal noUi-background">
-                </div>                  
-              </div>
             </div>
-            <div class="col-md-6">
-              <div class="aa-single-filter-search">
-                <span>PRICE ($)</span>
-                <span>FROM</span>
-                <span id="skip-value-lower2" class="example-val">30.00</span>
-                <span>TO</span>
-                <span id="skip-value-upper2" class="example-val">100.00</span>
-                <div id="aa-price-range" class="noUi-target noUi-ltr noUi-horizontal noUi-background">
-                </div>      
-              </div>
-            </div>
-          </div>  
-         </div>
-        </div>
+          </form>
       </div>
     </div>
   </section>
@@ -369,7 +373,28 @@
   </footer>
   <!-- / Footer -->
 
- 
+ <script>
+   let searchBtn = document.querySelector("#search")
+   searchBtn.addEventListener("click",function () {
+  
+     let minPrice = document.getElementById("skip-value-lower").innerText
+     let maxPrice = document.getElementById("skip-value-upper").innerText
+
+     let minArea = document.getElementById("skip-value-lower2").innerText
+     let maxArea =  document.getElementById("skip-value-upper2").innerText
+    
+     let form = document.getElementById("form")
+
+     form["minPrice"]=minPrice
+     form["maxPrice"]=maxPrice
+     console.log(form);
+     form["minArea"]=minArea
+     form["maxArea"]=maxArea
+    
+     form.submit()
+  
+    })
+ </script>
   
   <!-- jQuery library -->
   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->

@@ -5,15 +5,14 @@ const LocalStrategy = require('passport-local').Strategy
 
 async function authenticateUser(email,password,done) {
    try {
-    const user = User.findOne({email:email})
+    const user = await User.findOne({email:email})
 
-    if(!user) done(null,flase,{message:"the credentials are not correct"})
-    
+    if(!user) return done(null,false,{messages:"the credentials are not correct"})
     const p = await bcrypt.compare(password,user.password)
-    if(!p) done(null,flase,{message:"the password is not correct"})
-    done(null,user)
+    if(!p) return done(null,false,{messages:"the password is not correct"})
+    return done(null,user)
    } catch (error) {
-      done(error)
+      return done(error)
    }
 
 }
