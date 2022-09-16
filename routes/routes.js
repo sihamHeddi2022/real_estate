@@ -11,9 +11,23 @@ routes.get("/",(req,res)=>{
 
 })
 
+// routes.get("/properties-detail/:id",async(req,res)=>{
+//     let id = req.params.id
+ 
+//         const house = await House.findById(id)
+//         if(!house) return res.redirect("/")
+//         console.log(house);
+
+//         return res.render("properties-detail",{house:house}) 
+ 
+ 
+     
+
+// })
+
 routes.get("/properties",async(req,res)=>{
     let query_params = req.query
-    const query = Object.keys(query_params).length>0? {"location.city":{$regex:query_params.city, $options: 'i'},category:query_params.category,price:{$lte:query_params.minPrice,$gte:query_params.maxPrice},area:{$lte:query_params.minArea,$gte:query_params.maxArea},num_bedrooms:query_params.bedrooms,num_bathrooms:query_params.bathrooms, business_type:query_params.type}:{}
+    const query = Object.keys(query_params).length>0? {"location.city":{$regex:query_params.city, $options: 'i'},category:query_params.category,price:{$gte:query_params.minPrice,$lte:query_params.maxPrice},area:{$gte:query_params.minArea,$lte:query_params.maxArea},num_bedrooms:query_params.bedrooms,num_bathrooms:query_params.bathrooms, business_type:query_params.type}:{}
  
         const houses = await House.find(query)
         console.log(houses);

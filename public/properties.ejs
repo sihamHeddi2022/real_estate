@@ -41,14 +41,7 @@
                     <option value="4">Date</option>
                   </select>
                 </form>
-                <form action="" class="aa-show-form">
-                  <label for="">Show</label>
-                  <select name="">
-                    <option value="1" selected="12">6</option>
-                    <option value="2">12</option>
-                    <option value="3">24</option>
-                  </select>
-                </form>
+              
               </div>
               <div class="aa-properties-content-head-right">
                 <a id="aa-grid-properties" href="#"><span class="fa fa-th"></span></a>
@@ -58,174 +51,37 @@
             <!-- Start properties content body -->
             <div class="aa-properties-content-body">
               <ul class="aa-properties-nav">
+                <% houses.forEach(house=> { %> 
                 <li>
                   <article class="aa-properties-item">
-                    <a class="aa-properties-item-img" href="#">
-                      <img alt="img" src="img/item/6.jpg">
+                    <a class="aa-properties-item-img" href="/properties-detail/<%=house._id%>">
+                      <img alt="img" src="<%=house.image%>">
                     </a>
-                    <div class="aa-tag for-rent">
-                      For Rent
+                    <div class="aa-tag <% if(house.business_type=='rent') {%> for-rent <% } else { %> for-sale <% } %>   ">
+                      <%= house.business_type  %> 
                     </div>
                     <div class="aa-properties-item-content">
                       <div class="aa-properties-info">
-                        <span>5 Rooms</span>
-                        <span>2 Beds</span>
-                        <span>3 Baths</span>
-                        <span>1100 SQ FT</span>
+                   
+                        <span><%= house.num_bedrooms %> Bedrooms</span>
+                        <span><%= house.num_bathrooms %> Baths</span>
+                        <span><%= house.area %> SQ FT</span>
                       </div>
                       <div class="aa-properties-about">
-                        <h3><a href="#">Appartment Title</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
+                        <h3><a href="#"><%= house.Title  %> </a></h3>
+                        <p><%= house.description  %></p>                      
                       </div>
                       <div class="aa-properties-detial">
                         <span class="aa-price">
-                          $35000
+                          $<%= house.price  %>
                         </span>
-                        <a class="aa-secondary-btn" href="#">View Details</a>
+                        <a class="aa-secondary-btn" href="/properties-detail/<%=house._id%>">View Details</a>
                       </div>
                     </div>
                   </article>
                 </li>
-                <li>
-                  <article class="aa-properties-item">
-                    <a class="aa-properties-item-img" href="#">
-                      <img alt="img" src="img/item/1.jpg">
-                    </a>
-                    <div class="aa-tag sold-out">
-                      Sold Out
-                    </div>
-                    <div class="aa-properties-item-content">
-                      <div class="aa-properties-info">
-                        <span>5 Rooms</span>
-                        <span>2 Beds</span>
-                        <span>3 Baths</span>
-                        <span>1100 SQ FT</span>
-                      </div>
-                      <div class="aa-properties-about">
-                        <h3><a href="#">Appartment Title</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
-                      </div>
-                      <div class="aa-properties-detial">
-                        <span class="aa-price">
-                          $35000
-                        </span>
-                        <a class="aa-secondary-btn" href="#">View Details</a>
-                      </div>
-                    </div>
-                  </article>
-                </li>
-                 <li>
-                  <article class="aa-properties-item">
-                    <a class="aa-properties-item-img" href="#">
-                      <img alt="img" src="img/item/2.jpg">
-                    </a>
-                    <div class="aa-tag sold-out">
-                      Sold Out
-                    </div>
-                    <div class="aa-properties-item-content">
-                      <div class="aa-properties-info">
-                        <span>5 Rooms</span>
-                        <span>2 Beds</span>
-                        <span>3 Baths</span>
-                        <span>1100 SQ FT</span>
-                      </div>
-                      <div class="aa-properties-about">
-                        <h3><a href="#">Appartment Title</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
-                      </div>
-                      <div class="aa-properties-detial">
-                        <span class="aa-price">
-                          $35000
-                        </span>
-                        <a class="aa-secondary-btn" href="#">View Details</a>
-                      </div>
-                    </div>
-                  </article>
-                </li>
-                <li>
-                  <article class="aa-properties-item">
-                    <a class="aa-properties-item-img" href="#">
-                      <img alt="img" src="img/item/5.jpg">
-                    </a>
-                    <div class="aa-tag for-sale">
-                      For Sale
-                    </div>
-                    <div class="aa-properties-item-content">
-                      <div class="aa-properties-info">
-                        <span>5 Rooms</span>
-                        <span>2 Beds</span>
-                        <span>3 Baths</span>
-                        <span>1100 SQ FT</span>
-                      </div>
-                      <div class="aa-properties-about">
-                        <h3><a href="#">Appartment Title</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
-                      </div>
-                      <div class="aa-properties-detial">
-                        <span class="aa-price">
-                          $35000
-                        </span>
-                        <a class="aa-secondary-btn" href="#">View Details</a>
-                      </div>
-                    </div>
-                  </article>
-                </li>
-                 <li>
-                  <article class="aa-properties-item">
-                    <a class="aa-properties-item-img" href="#">
-                      <img alt="img" src="img/item/3.jpg">
-                    </a>
-                    <div class="aa-tag for-rent">
-                        For Rent
-                    </div>
-                    <div class="aa-properties-item-content">
-                      <div class="aa-properties-info">
-                        <span>5 Rooms</span>
-                        <span>2 Beds</span>
-                        <span>3 Baths</span>
-                        <span>1100 SQ FT</span>
-                      </div>
-                      <div class="aa-properties-about">
-                        <h3><a href="#">Appartment Title</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
-                      </div>
-                      <div class="aa-properties-detial">
-                        <span class="aa-price">
-                          $35000
-                        </span>
-                        <a class="aa-secondary-btn" href="#">View Details</a>
-                      </div>
-                    </div>
-                  </article>
-                </li>
-                 <li>
-                  <article class="aa-properties-item">
-                    <a class="aa-properties-item-img" href="#">
-                      <img alt="img" src="img/item/4.jpg">
-                    </a>
-                    <div class="aa-tag for-sale">
-                      For Sale
-                    </div>
-                    <div class="aa-properties-item-content">
-                      <div class="aa-properties-info">
-                        <span>5 Rooms</span>
-                        <span>2 Beds</span>
-                        <span>3 Baths</span>
-                        <span>1100 SQ FT</span>
-                      </div>
-                      <div class="aa-properties-about">
-                        <h3><a href="#">Appartment Title</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
-                      </div>
-                      <div class="aa-properties-detial">
-                        <span class="aa-price">
-                          $35000
-                        </span>
-                        <a class="aa-secondary-btn" href="#">View Details</a>
-                      </div>
-                    </div>
-                  </article>
-                </li>
+                <% }) %> 
+   
               </ul>
             </div>
             <!-- Start properties content bottom -->
@@ -258,48 +114,54 @@
             <!-- Start Single properties sidebar -->
             <div class="aa-properties-single-sidebar">
               <h3>Properties Search</h3>
-              <form action="">
+              <form action="/properties" method="get" id="form">
                 <div class="aa-single-advance-search">
-                  <input type="text" placeholder="Type Your Location">
+                  <input type="text" placeholder="Type Your City" name="city" <% if(query) {%> value="<%=query.city %>"<% } %> >
                 </div>
                 <div class="aa-single-advance-search">
-                  <select>
-                    <option value="" selected>Category</option>
-                   <option value="0" >Apartment</option>
-                    <option value="1">Cottage</option>
-                    <option value="2">Castle</option>
-                    <option value="3">Villa</option>
-                    <option value="4">family house</option>
-                  </select>
+                  <select name="category">
+                    <option value="Apartment" <% if(query.category == "Apartment") { %> selected <% } %>  >Apartment</option>
+                      <option value="Cottage" <% if(query.category == "Cottage") { %> selected <% } %> >Cottage</option>
+                      <option value="Castle" <% if(query.category == "Castle") { %> selected <% } %> >Castle</option>
+                      <option value="Villa" <% if(query.category == "Villa") { %> selected <% } %> >Villa</option>
+                      <option value="Family house" <% if(query.category == "Family house") { %> selected <% } %> >Family house</option>
+                    </select>
                 </div>
                 <div class="aa-single-advance-search">
-                  <select>
-                    <option value="0" selected>Type</option>
-                    <option value="1">Rent</option>
-                    <option value="2">Sale</option>
+                  <select name="type">
+
+                    <option value="rent"  <% if(query.type == "rent") { %> selected <% } %> >Rent</option>
+                    <option value="sale" <% if(query.type == "sale") { %> selected <% } %>>Sale</option>
                   
                   </select>
                 </div>
                 <div class="aa-single-advance-search">
-                  <select>
-                    <option value="0" selected>Bedrooms</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="4">5</option>
+                  <select name="bathrooms">
+                    <option >Bedrooms</option>
+                    <option value="1" <% if(query.bedrooms == "1") { %> selected <% } %> >1</option>
+                    <option value="2" <% if(query.bedrooms == "2") { %> selected <% } %>>2</option>
+                    <option value="3" <% if(query.bedrooms == "3") { %> selected <% } %>>3</option>
+                    <option value="4" <% if(query.bedrooms == "4") { %> selected <% } %>>4</option>
+                    <option value="5" <% if(query.bedrooms == "5") { %> selected <% } %>>5</option>
                   </select>
                 </div>
                 <div class="aa-single-advance-search">
-                  <select>
-                    <option value="0" selected>Bathrooms</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="4">5</option>
+                  <select name="bedrooms">
+                    <option >Bathrooms</option>
+                    <option value="1" <% if(query.bathrooms == "1") { %> selected <% } %>>1</option>
+                    <option value="2" <% if(query.bathrooms == "2") { %> selected <% } %>>2</option>
+                    <option value="3" <% if(query.bathrooms == "3") { %> selected <% } %>>3</option>
+                    <option value="4" <% if(query.bathrooms == "4") { %> selected <% } %>>4</option>
+                    <option value="5" <% if(query.bathrooms == "5") { %> selected <% } %>>5</option>
                   </select>
                 </div>
+                <input type="hidden" name="minPrice">
+                <input type="hidden" name="maxPrice">
+
+                <input type="hidden" name="minArea">
+                <input type="hidden" name="maxArea">
+             
+             
                 <div class="aa-single-filter-search">
                   <span>AREA (SQ)</span>
                   <span>FROM</span>
@@ -319,7 +181,7 @@
                   </div>      
                 </div>
                 <div class="aa-single-advance-search">
-                  <input type="submit" value="Search" class="aa-search-btn">
+                  <button class="aa-search-btn" id="search"  type="button"><i class="bi bi-search"></i></button>
                 </div>
               </form>
             </div> 
@@ -369,7 +231,27 @@
   </footer>
   <!-- / Footer -->
 
-
+  <script>
+    let searchBtn = document.querySelector("#search")
+    searchBtn.addEventListener("click",function () {
+   
+      let minArea= document.getElementById("skip-value-lower").innerText
+      let maxArea = document.getElementById("skip-value-upper").innerText
+ 
+      let minPrice = document.getElementById("skip-value-lower2").innerText
+      let maxPrice =  document.getElementById("skip-value-upper2").innerText
+     
+      let form = document.getElementById("form")
+      
+      form["minPrice"].value=minPrice
+      form["maxPrice"].value=maxPrice
+      form["minArea"].value=minArea
+      form["maxArea"].value=maxArea
+     
+      form.submit()
+   
+     })
+  </script>
  
   <!-- jQuery library -->
   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
