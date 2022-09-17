@@ -54,7 +54,7 @@
                 <% houses.forEach(house=> { %> 
                 <li>
                   <article class="aa-properties-item">
-                    <a class="aa-properties-item-img" href="/properties-detail/<%=house._id%>">
+                    <a class="aa-properties-item-img" href="/contact/<%=house._id%>">
                       <img alt="img" src="<%=house.image%>">
                     </a>
                     <div class="aa-tag <% if(house.business_type=='rent') {%> for-rent <% } else { %> for-sale <% } %>   ">
@@ -75,7 +75,7 @@
                         <span class="aa-price">
                           $<%= house.price  %>
                         </span>
-                        <a class="aa-secondary-btn" href="/properties-detail/<%=house._id%>">View Details</a>
+                        <a class="aa-secondary-btn" href="/contact/<%=house._id%>">Contact</a>
                       </div>
                     </div>
                   </article>

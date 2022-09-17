@@ -64,7 +64,7 @@ const houseSchema = new mongoose.Schema({
   
 
 
-}) 
+},{timestamps:true}) 
 const House = mongoose.model("house",houseSchema)
 
 module.exports= {

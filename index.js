@@ -16,12 +16,13 @@ app.set('view engine','ejs');
 app.use(express.static(path.join(__dirname,"public")))
 app.use("/assets",express.static(path.join(__dirname,"public","admin","assets")))
 
+
 app.use(bodyParser.urlencoded({extended:true}))
 
 app.use(flash())
 app.use(session({
     secret:"jzjj2929sp28djsdjddhdh282dhdhsd",
-    resave:false,
+    resave:true,
     saveUninitialized:false
 }))
 app.use(passport.initialize())

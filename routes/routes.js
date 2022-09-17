@@ -4,12 +4,72 @@ const routes = require("express").Router()
 const bcrypt = require("bcryptjs")
 const passport = require("passport")
 const { House } = require("../models/house")
-
+const { Client } = require("../models/client")
+const {Order} = require("../models/order")
 
 routes.get("/",(req,res)=>{
     return res.render("index") 
 
 })
+ 
+
+  routes.get("/contact/:id",(req,res)=>{
+    return res.render("contact",{id:req.params.id}) 
+  })
+
+routes.post("/contact",async(req,res)=>{
+    const {id,email} = req.body
+
+    try {
+        let client = await Client.findOne({email:email})
+        if(!client){
+           client = await new Client({
+            email:email,
+            phone:req.body.phone,
+            first_name:req.body.first_name,
+            last_name:req.body.last_name,
+            adress : {
+              street:req.body.street,
+              city:req.body.city,
+              country:req.body.country,
+              postal_code:req.body.postal_code
+            }
+           }).save()
+
+        }
+        else {
+            if (await Order.findOne({houseID:id,  clientID: client._id})) {
+                req.flash("error","this order already exists")
+                return res.redirect("/contact/"+id)
+            }
+        }
+        const house = await House.findOne({_id:id})
+        if(!house) {
+            req.flash("error","there is no house with that id")
+            return res.redirect("/contact/"+id)
+        }
+        const order = await new Order({
+            OwnerID: house.OwnerID,
+            clientID: client._id,
+            houseID: house._id,
+        })
+        await order.save()
+        req.flash("success","Order succefully created !!")
+        
+        return res.redirect("/contact/"+id)
+
+
+
+    } catch (error) {
+        console.log(error);
+        req.flash("error","internal error server")
+        return res.redirect("/contact/"+id)
+
+    } 
+  })
+
+
+
 
 // routes.get("/properties-detail/:id",async(req,res)=>{
 //     let id = req.params.id
@@ -85,17 +145,43 @@ routes.route("/register").get(checkNotAuth,(_req,res)=>{
 })
 
 
-routes.get("/dashboard",checkAuth,(req,res)=>{
-    return res.render("admin/pages/dashboard",{"title":"Dashboard"}) 
+routes.get("/dashboard",checkAuth,async(req,res)=>{
+    try {
+    
+        // const orders = await Order.find({OwnerID:req.user._id})
+        // console.log(orders);
+        return res.render("admin/pages/dashboard",{"title":"Dashboard"})
+        
+
+    } catch (error) {
+        console.log(error);
+        return res.render("admin/pages/dashboard",{"title":"Dashboard"})
+
+    }
+    
 
 })
 
-routes.get("/admin/houses",checkAuth,(req,res)=>{
-    return res.render("admin/pages/houses",{"title":"Houses"}) 
+routes.get("/admin/houses",checkAuth,async(req,res)=>{
+    
+    const houses = await House.find({OwnerID:req.user._id})
+  console.log(houses);
+    return res.render("admin/pages/houses",{"title":"Houses","houses":houses}) 
 
 })
-routes.get("/admin/orders",checkAuth,(req,res)=>{
-    return res.render("admin/pages/orders",{"title":"Orders"}) 
+routes.get("/admin/orders",checkAuth,async(req,res)=>{
+    const orders = await Order.find({OwnerID:req.user._id,status:"pending"})
+    
+    const order_details = [] 
+   
+      orders.forEach(async element => {
+        order_details.push({houseID:element.houseID,client:await Client.findById(element.clientID)})
+        console.log("rfddf ");
+    });
+    console.log("order_details :", order_details);
+    
+    return res.render("admin/pages/orders",{"title":"orders","orders":order_details}) 
+  
 
 })
 routes.get("/admin/profile",checkAuth,(req,res)=>{

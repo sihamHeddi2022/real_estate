@@ -20,8 +20,8 @@ async function authenticateUser(email,password,done) {
 function intialize() {
     passport.use(new LocalStrategy({ usernameField: 'email' }, authenticateUser))
     passport.serializeUser((user, done) => done(null, user.id))
-    passport.deserializeUser((id, done) => {
-      return done(null, User.findById(id))
+    passport.deserializeUser(async(id, done) => {
+      return done(null, await User.findById(id))
     })
 }
 

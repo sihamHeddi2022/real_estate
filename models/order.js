@@ -10,7 +10,7 @@ const orderSchema = new mongoose.Schema({
     enum: ["pending", "accepted", "rejected"],
     default: "pending",
   },
-});
+},{timestamps:true});
 const Order = mongoose.model("order", orderSchema);
 
 module.exports = {

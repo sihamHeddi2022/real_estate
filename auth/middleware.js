@@ -2,7 +2,7 @@
 
 const checkAuth = (req,res,next)=>{
     if (req.isAuthenticated()) {
-        next()
+        return next()
     }
     return res.redirect("/login")
 }
