@@ -49,7 +49,7 @@
             <li class="breadcrumb-item text-sm"><a class="text-white opacity-5" href="javascript:;">Pages</a></li>
             <li class="breadcrumb-item text-sm text-white active" aria-current="page">Profile</li>
           </ol>
-          <h6 class="text-white font-weight-bolder ms-2">Profile</h6>
+          <h6 class="text-white font-weight-bolder ms-2">add house</h6>
  
  
         </nav>
@@ -72,16 +72,7 @@
               <img src="../assets/img/team-1.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
             </div>
           </div>
-          <div class="col-auto my-auto">
-            <div class="h-100">
-              <h5 class="mb-1">
-                Sayo Kravits
-              </h5>
-              <p class="mb-0 font-weight-bold text-sm">
-                Public Relations
-              </p>
-            </div>
-          </div>
+   
           <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
             <div class="nav-wrapper position-relative end-0">
               <ul class="nav nav-pills nav-fill p-1" role="tablist">
@@ -100,78 +91,119 @@
       </div>
     </div>
     <div class="container-fluid py-4">
+      <form action="/admin/add" method="post">
+
+
       <div class="row">
         <div class="col-md-12">
           <div class="card">
             <div class="card-header pb-0">
               <div class="d-flex align-items-center">
-                <p class="mb-0">Edit Profile</p>
-                <button class="btn btn-primary btn-sm ms-auto">Save Changes</button>
+          
+                <button class="btn btn-primary btn-sm ms-auto" type="submit">Save Changes</button>
               </div>
             </div>
             <div class="card-body">
-              <p class="text-uppercase text-sm">User Information</p>
+              <p class="text-uppercase text-sm">House Information</p>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Username</label>
-                    <input class="form-control" type="text" value="lucky.jesse">
+                    <label for="example-text-input" class="form-control-label">Title</label>
+                    <input class="form-control" type="text"  name="title" required>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Email address</label>
-                    <input class="form-control" type="email" value="jesse@example.com">
+                    <label for="example-text-input" class="form-control-label">Price</label>
+                    <input class="form-control" type="number" value="100" name="price" required>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">First name</label>
-                    <input class="form-control" type="text" value="Jesse">
+                    <label for="example-text-input" class="form-control-label">category</label>
+                    <select name="category" class="form-control" >
+                      <option value="Apartment" >Apartment</option>
+                        <option value="Cottage">Cottage</option>
+                        <option value="Castle">Castle</option>
+                        <option value="Villa">Villa</option>
+                        <option value="Family house">Family house</option>
+                      </select>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Last name</label>
-                    <input class="form-control" type="text" value="Lucky">
+                    <label for="example-text-input" class="form-control-label">business type</label>
+                    
+                    <select name="business_type" class="form-control">
+                      
+                      <option value="rent">rent</option>
+                      <option value="sale">sale</option>
+                    
+                    </select>
                   </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                  <select   name="bathrooms" class="form-control" >
+                    <option value="" selected>Bathrooms</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <select  name="bedrooms"  class="form-control">
+                      <option value="" selected>Bedrooms</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Area</label>
+                  <input class="form-control" type="number" value="200" name="area" required>
                 </div>
               </div>
               <hr class="horizontal dark">
-              <p class="text-uppercase text-sm">Contact Information</p>
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Address</label>
-                    <input class="form-control" type="text" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">City</label>
-                    <input class="form-control" type="text" value="New York">
+                    <input class="form-control" type="text" name="city" required>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Country</label>
-                    <input class="form-control" type="text" value="United States">
+                    <label for="example-text-input" class="form-control-label">Street</label>
+                    <input class="form-control" type="text" name="street" required>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Postal code</label>
-                    <input class="form-control" type="text" value="437300">
+                    <label for="example-text-input" class="form-control-label">zip codes</label>
+                    <input class="form-control" type="text" name="zip_codes" required>
                   </div>
                 </div>
               </div>
               <hr class="horizontal dark">
-              <p class="text-uppercase text-sm">About me</p>
+              <p class="text-uppercase text-sm">Description</p>
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">About me</label>
-                    <input class="form-control" type="text" value="A beautiful Dashboard for Bootstrap 5. It is Free and Open Source.">
+                    <label for="example-text-input" class="form-control-label">Description</label>
+                    <input class="form-control" type="text" name="description" required>
                   </div>
                 </div>
               </div>
@@ -183,7 +215,8 @@
     
     </div>
   </div>
-
+</form>
+    </div>
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>

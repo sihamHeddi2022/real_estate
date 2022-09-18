@@ -165,21 +165,68 @@ routes.get("/dashboard",checkAuth,async(req,res)=>{
 routes.get("/admin/houses",checkAuth,async(req,res)=>{
     
     const houses = await House.find({OwnerID:req.user._id})
-  console.log(houses);
+     
     return res.render("admin/pages/houses",{"title":"Houses","houses":houses}) 
 
 })
+routes.route("/admin/add").get(checkAuth,(req,res)=>{
+    return res.render("admin/pages/add")
+}).post(checkAuth,async(req,res)=>{
+
+    const {street,city,zip_codes,...rest} = req.body
+    
+    const location = {
+        street:street,
+        city:city,
+        zip_codes:zip_codes
+    }
+
+    rest.location = location
+
+    await new  House(rest).save()
+
+    return res.render("admin/pages/add")
+})
+routes.get("/order/:id/:status",checkAuth,async(req,res)=>{
+    
+    const orders = await Order.findOne({_id:req.params.id,status:"pending"})
+    if (!orders) {
+        req.flash("errors","the order does not exist or may be delivered before")
+        return res.redirect("/admin/orders")
+    }
+
+    if(req.params.status == 1) orders.status = "accepted"
+    else  orders.status = "rejected"
+  
+    await orders.save()
+  
+    req.flash("success","success !!")
+   
+    return res.redirect("/admin/orders")
+
+})
+
 routes.get("/admin/orders",checkAuth,async(req,res)=>{
     const orders = await Order.find({OwnerID:req.user._id,status:"pending"})
     
-    const order_details = [] 
-   
-      orders.forEach(async element => {
-        order_details.push({houseID:element.houseID,client:await Client.findById(element.clientID)})
-        console.log("rfddf ");
-    });
-    console.log("order_details :", order_details);
+    const clients =  await Client.find({})
+
+    let order_details = []
     
+    orders.forEach(r=>{
+        clients.forEach(e=>{
+            if (e._id==r.clientID) {
+             
+                order_details.push({"client":e,"order":r})    
+               
+            }
+        })
+    })
+
+
+
+
+      
     return res.render("admin/pages/orders",{"title":"orders","orders":order_details}) 
   
 
