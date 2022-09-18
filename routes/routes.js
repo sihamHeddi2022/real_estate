@@ -6,6 +6,21 @@ const passport = require("passport")
 const { House } = require("../models/house")
 const { Client } = require("../models/client")
 const {Order} = require("../models/order")
+const path = require("path")
+
+const multer = require("multer")
+
+const storage = multer.diskStorage({
+    destination:(req,file,cb)=>{
+        cb(null,"public/img")
+    },
+    filename:(req,file,cb)=>{
+        cb(null, Date.now()+path.extname(file.originalname))
+    }
+})
+
+const upload = multer({storage:storage})
+
 
 routes.get("/",(req,res)=>{
     return res.render("index") 
@@ -171,8 +186,7 @@ routes.get("/admin/houses",checkAuth,async(req,res)=>{
 })
 routes.route("/admin/add").get(checkAuth,(req,res)=>{
     return res.render("admin/pages/add")
-}).post(checkAuth,async(req,res)=>{
-
+}).post(checkAuth,upload.single("image"),async(req,res)=>{
     const {street,city,zip_codes,...rest} = req.body
     
     const location = {
@@ -180,9 +194,11 @@ routes.route("/admin/add").get(checkAuth,(req,res)=>{
         city:city,
         zip_codes:zip_codes
     }
-
+    
+    rest.image = ".."+req.file.path.split("public")[1]
     rest.location = location
-
+    rest.OwnerID = req.user._id
+    
     await new  House(rest).save()
 
     return res.render("admin/pages/add")

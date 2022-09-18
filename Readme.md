@@ -1,5 +1,12 @@
-## Real Estate web app using nodejs mongodb
+## Real Estate web app using nodejs mongodb passportjs ejs
 
+
+### Features
+    - login
+    - register
+    - add houses
+    - create order , accepted , rejected
+    - search houses 
 
 ### database schema
         - House
